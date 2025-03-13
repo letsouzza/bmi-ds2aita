@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.Balance
@@ -34,6 +35,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -43,13 +45,13 @@ import br.senai.sp.jandira.bmi.R
 fun UserDataScreen(modifier: Modifier = Modifier) {
 
     var ageState = remember{
-        mutableStateOf("Age")
+        mutableStateOf("")
     }
     var weightState = remember {
-        mutableStateOf("Weight")
+        mutableStateOf("")
     }
     var heightState = remember {
-        mutableStateOf("Height")
+        mutableStateOf("")
     }
 
     Box(
@@ -156,7 +158,17 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
                                 tint = Color(0xFF9B81DC)
                             )
                         },
+                        label = {
+                            Text(
+                                text = stringResource(
+                                    R.string.age
+                                )
+                            )
+                        },
                         shape = RoundedCornerShape(20.dp),
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Number
+                        ),
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 40.dp)
@@ -174,7 +186,17 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
                                 tint = Color(0xFF9B81DC)
                             )
                         },
+                        label = {
+                            Text(
+                                text = stringResource(
+                                    R.string.weight
+                                )
+                            )
+                        },
                         shape = RoundedCornerShape(20.dp),
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Number
+                        ),
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 30.dp)
@@ -192,7 +214,17 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
                                 tint = Color(0xFF9B81DC)
                             )
                         },
+                        label = {
+                            Text(
+                                text = stringResource(
+                                    R.string.height
+                                )
+                            )
+                        },
                         shape = RoundedCornerShape(20.dp),
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Number
+                        ),
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 30.dp)
@@ -204,7 +236,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
                             .fillMaxWidth()
                             .padding(top = 50.dp),
                         shape = RoundedCornerShape(10.dp),
-                        colors = ButtonDefaults.buttonColors(Color(0xFF471894))
+                        colors = ButtonDefaults.buttonColors(Color(0xFF451693))
                     ){
                         Text(
                             text = stringResource(
