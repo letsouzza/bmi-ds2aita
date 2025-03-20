@@ -10,4 +10,7 @@
     <string name="weight">Peso</string>
     <string name="height">Altura</string>
     <string name="calculate">Calcular</string>
+    <string name="your_bmi">Seu Resultado de IMC</string>
+    <string name="result">Você tem Obesidade grau 1</string>
+    <string name="new_calc">Novo Cálculo</string>
 </resources>

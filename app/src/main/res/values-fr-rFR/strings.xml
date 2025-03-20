@@ -10,4 +10,7 @@
     <string name="weight">Poids</string>
     <string name="height">Taille</string>
     <string name="calculate">Calculer</string>
+    <string name="your_bmi">Votre résultat d\'IMC</string>
+    <string name="result">Vous avez une Obésité de classe I </string>
+    <string name="new_calc">Nouveau Calcul</string>
 </resources>
