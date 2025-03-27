@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.bmi.screens
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -8,18 +9,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.Balance
-import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.Cake
 import androidx.compose.material.icons.filled.Height
-import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -32,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -39,20 +37,26 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.senai.sp.jandira.bmi.R
 
 @Composable
-fun UserDataScreen(modifier: Modifier = Modifier) {
+fun UserDataScreen(navegacao: NavHostController?) {
 
-    var ageState = remember{
+    val ageState = remember{
         mutableStateOf("")
     }
-    var weightState = remember {
+    val weightState = remember {
         mutableStateOf("")
     }
-    var heightState = remember {
+    val  heightState = remember {
         mutableStateOf("")
     }
+
+    val context = LocalContext.current
+    val userFile = context.getSharedPreferences("user_file", Context.MODE_PRIVATE)
+    val userName = userFile.getString("user_name", "")
+    val editor = userFile.edit()
 
     Box(
         modifier = Modifier
@@ -71,9 +75,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
                 )
         ){
             Text(
-                text = stringResource(
-                    R.string.hi
-                ),
+                text = stringResource(R.string.hi) + ", $userName!",
                 fontSize = 50.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
@@ -231,7 +233,13 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
                     )
 
                     Button(
-                        onClick = {},
+                        onClick = {
+                            editor.putInt("user_age", ageState.value.toInt())
+                            editor.putFloat("user_weight", weightState.value.toFloat())
+                            editor.putFloat("user_height", heightState.value.toFloat())
+                            editor.apply()
+                            navegacao?.navigate("bmi_result")
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 50.dp),
@@ -255,5 +263,5 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
 @Preview (showSystemUi = true)
 @Composable
 private fun UserDataScreenPreview() {
-    UserDataScreen()
+    UserDataScreen(null)
 }
