@@ -13,4 +13,10 @@
     <string name="your_bmi">Seu Resultado de IMC</string>
     <string name="result">Você tem Obesidade grau 1</string>
     <string name="new_calc">Novo Cálculo</string>
+    <string name="under_weight">Você está abaixo do seu peso ideal!</string>
+    <string name="normal_weight">Você tem o peso normal!</string>
+    <string name="over_weight">Você está levemente acima do peso!</string>
+    <string name="class1_weight">Você tem Obesidade Grau 1!</string>
+    <string name="class2_weight">Você tem Obesidade Grau 2!</string>
+    <string name="class3_weight">Você tem Obesidade Grau 3!</string>
 </resources>

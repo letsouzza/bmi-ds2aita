@@ -229,7 +229,9 @@ fun BMIResultScreen(navegacao: NavHostController?) {
                         color = Color.Gray
                     )
                     Button(
-                        onClick = {},
+                        onClick = {
+                            navegacao?.navigate("home")
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 30.dp),
