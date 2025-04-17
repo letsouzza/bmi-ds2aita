@@ -19,4 +19,10 @@
     <string name="class1_weight">Você tem Obesidade Grau 1!</string>
     <string name="class2_weight">Você tem Obesidade Grau 2!</string>
     <string name="class3_weight">Você tem Obesidade Grau 3!</string>
+    <string name="under">Abaixo do peso</string>
+    <string name="normal">Peso normal</string>
+    <string name="over">Acima do peso</string>
+    <string name="class1">Obesidade Grau 1</string>
+    <string name="class2">Obesidade Grau 2</string>
+    <string name="class3">Obesidade Grau 3</string>
 </resources>

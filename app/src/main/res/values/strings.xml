@@ -19,4 +19,10 @@
     <string name="class1_weight">You have Class I Obesity!</string>
     <string name="class2_weight">You have Class II Obesity!</string>
     <string name="class3_weight">You have Class III Obesity!</string>
+    <string name="under">Underweight</string>
+    <string name="normal">Normal</string>
+    <string name="over">Overweight</string>
+    <string name="class1">Obesity Class I</string>
+    <string name="class2">Obesity Class II</string>
+    <string name="class3">Obesity Class III</string>
 </resources>

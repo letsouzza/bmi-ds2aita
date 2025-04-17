@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,6 +38,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.senai.sp.jandira.bmi.R
 import br.senai.sp.jandira.bmi.calcs.bmiCalculate
+import br.senai.sp.jandira.bmi.model.BmiStatus
+import br.senai.sp.jandira.bmi.screens.components.BmiLevel
 import br.senai.sp.jandira.bmi.utils.numberConvertToLocale
 import java.util.Locale
 
@@ -221,10 +224,63 @@ fun BMIResultScreen(navegacao: NavHostController?) {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(200.dp)
                             .padding(top = 10.dp)
-                            .background(color = Color.DarkGray)
-                    ){ }
+                    ){
+                        BmiLevel(
+                            leftText = stringResource(R.string.under),
+                            rightText = "< 18.5",
+                            bulletColor = colorResource(R.color.light_blue),
+                            background =
+                                if(result.status == BmiStatus.UNDER_WEIGHT)
+                                    colorResource(R.color.light_blue)
+                                else Color.Transparent
+                        )
+                        BmiLevel(
+                            leftText = stringResource(R.string.normal),
+                            rightText = "18.5 - 24.9",
+                            bulletColor = colorResource(R.color.light_green),
+                            background =
+                            if(result.status == BmiStatus.NORMAL)
+                                colorResource(R.color.light_green)
+                            else Color.Transparent
+                        )
+                        BmiLevel(
+                            leftText = stringResource(R.string.over),
+                            rightText = "25.0 - 29.9",
+                            bulletColor = colorResource(R.color.yellow),
+                            background =
+                            if(result.status == BmiStatus.OVER_WEIGHT)
+                                colorResource(R.color.yellow)
+                            else Color.Transparent
+                        )
+                        BmiLevel(
+                            leftText = stringResource(R.string.class1),
+                            rightText = "30.0 - 34.9",
+                            bulletColor = colorResource(R.color.light_orange),
+                            background =
+                            if(result.status == BmiStatus.OBESITY_1)
+                                colorResource(R.color.light_orange)
+                            else Color.Transparent
+                        )
+                        BmiLevel(
+                            leftText = stringResource(R.string.class2),
+                            rightText = "35.0 - 39.9",
+                            bulletColor = colorResource(R.color.dark_orange),
+                            background =
+                            if(result.status == BmiStatus.OBESITY_2)
+                                colorResource(R.color.dark_orange)
+                            else Color.Transparent
+                        )
+                        BmiLevel(
+                            leftText = stringResource(R.string.class3),
+                            rightText = "> 40.0",
+                            bulletColor = colorResource(R.color.light_red),
+                            background =
+                            if(result.status == BmiStatus.OBESITY_3)
+                                colorResource(R.color.light_red)
+                            else Color.Transparent
+                        )
+                    }
                     HorizontalDivider(
                         modifier = Modifier
                             .padding(top = 30.dp),
